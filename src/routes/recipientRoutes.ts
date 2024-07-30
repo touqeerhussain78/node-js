@@ -1,6 +1,7 @@
 import express from 'express';
 import { RecipientController } from '../controllers/recipientController';
 import { body } from 'express-validator';
+import { uploadMultiple } from '../middlewares/multipleUploads'; // Adjust the import path as needed
 
 const router = express.Router();
 
@@ -67,11 +68,13 @@ router.get('/show/:id', RecipientController.getRecipientById);
  *       201:
  *         description: Created
  */
+/*upload.single('file'),*/
 router.post('/',
   body('name').isString(),
   body('email').isEmail(),
   body('phone').isString(),
   body('location').isString(),
+  uploadMultiple,
   RecipientController.createRecipient
 );
 

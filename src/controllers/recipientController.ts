@@ -28,7 +28,10 @@ export class RecipientController {
   }
 
   static async createRecipient(req: Request, res: Response) {
+    console.log(req);
     const { name, email, phone, location } = req.body;
+    // const { filename }: any = req.file;
+    console.log(req.file);
     try {
       const recipient = getRepository(Recipient).create({ name, email, phone, location });
       const result = await getRepository(Recipient).save(recipient);

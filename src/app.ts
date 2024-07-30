@@ -12,8 +12,11 @@ import ormConfig from './config/ormconfig';
 dotenv.config();
 
 const app = express();
+const path = require('path');
 app.use(cors());
 app.use(express.json());
+// Middleware to serve static files from the 'public' directory
+app.use('/public', express.static(path.join(__dirname, '../public')));
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use('/recipients', recipientRoutes);

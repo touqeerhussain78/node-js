@@ -22,16 +22,20 @@ export class Recipient {
   @Column()
   status: boolean;
 
+  @Column()
+  file: string;
+
  @CreateDateColumn({ type: 'timestamp' })
   created_at!: Date;
 
-  constructor(id: number, name: string, email: string, phone: string, location: string, status: boolean, created_at: Date) {
+  constructor(id: number, name: string, email: string, phone: string, location: string, status: boolean, file: string, created_at: Date) {
     this.id = id;
     this.name = name;
     this.email = email;
     this.phone = phone;
     this.location = location;
     this.status = status;
+    this.file = file;
     this.created_at = created_at;
   }
 }
